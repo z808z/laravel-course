@@ -19,4 +19,15 @@ class ArticleController extends Controller
         return view('frontend.layouts.primary', ['articles' => $articles, 'page' => 'frontend.pages.posts']);
     }
 
+    public function oneArticle($id)
+    {
+        $article = Article::find($id);
+        if($article) {
+            return view('frontend.layouts.primary', ['title' => $article->title, 'article' => $article, 'page' => 'frontend.pages.post']);
+        }
+        else {
+            abort(404);
+        }
+    }
+
 }
