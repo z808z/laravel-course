@@ -13,8 +13,14 @@
 
 
 
-Route::get('/', function () {
-    return view('frontend.layouts.primary', ['page' => 'frontend.pages.posts']);
+Route::group(['namespace' => 'Article'], function()
+{
+    /* Блог (Вывод всех новостей) */
+    Route::get('/', 'ArticleController@allArticle');
+
+    /* Просмотр одной новости */
+    Route::get('/{id}', 'ArticleController@oneArticle')
+        ->where('id', '[0-9]+');
 });
 
 Route::group(['middleware' => 'auth'], function () {
