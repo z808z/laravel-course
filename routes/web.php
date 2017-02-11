@@ -11,8 +11,10 @@
 |
 */
 
+
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.layouts.primary', ['page' => 'frontend.pages.posts']);
 });
 
 Route::group(['middleware' => 'auth'], function () {
