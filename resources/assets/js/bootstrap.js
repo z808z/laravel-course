@@ -9,7 +9,11 @@ window._ = require('lodash');
 
 window.$ = window.jQuery = require('jquery');
 
-require('bootstrap-sass');
+require('bootstrap-less');
+
+require('admin-lte');
+window.toastr = require('toastr');
+require('icheck');
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
@@ -28,7 +32,6 @@ window.Vue = require('vue');
 window.axios = require('axios');
 
 window.axios.defaults.headers.common = {
-    'X-CSRF-TOKEN': window.Laravel.csrfToken,
     'X-Requested-With': 'XMLHttpRequest'
 };
 
