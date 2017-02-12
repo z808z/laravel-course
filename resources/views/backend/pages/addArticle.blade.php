@@ -19,7 +19,7 @@
             </div>
         @endforeach
         <p><textarea name="description" id="" cols="30" rows="5">{{old('description')}}</textarea></p>
-        <h3><label for="content">Текст статьи</label></h3>
+        <h3><label for="content">Контент</label></h3>
         @foreach ($errors->get('content') as $message)
             <div class="box box-solid box-danger">
                 <ul>

@@ -1,5 +1,5 @@
 @section('content')
-    <h1>Добавление новой статьи</h1>
+    <h1>Изменение статьи</h1>
     <form action="" method="POST">
         <h3><label for="title">Заголовок статьи</label></h3>
         @foreach ($errors->get('title') as $message)
@@ -19,7 +19,7 @@
             </div>
         @endforeach
         <p><textarea name="description" id="" cols="30" rows="5">{{ $article->description }}</textarea></p>
-        <h3><label for="content">Текст статьи</label></h3>
+        <h3><label for="content">Контент</label></h3>
         @foreach ($errors->get('content') as $message)
             <div class="box box-solid box-danger">
                 <ul>

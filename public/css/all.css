@@ -21830,3 +21830,33 @@ button.toast-close-button {
 /*# sourceMappingURL=toastr.css.map */
 
 /*# sourceMappingURL=all.css.map */
+
+
+.box-body form .box ul {
+  list-style-type: none;
+  padding: 10px;
+  margin: 0;
+  font-weight: bold;
+  color: #dd4b39;
+}
+
+.box-body form h3 {
+  margin-top: 50px;
+}
+
+.box-body form input,
+.box-body form textarea {
+  width: 100%;
+  padding: 10px;
+}
+
+.box-body form input[type="submit"] {
+  max-width: 300px;
+}
+
+.box-body form input[name="confirm"], .box-body form input[name="cancel"] {
+  max-width: 35px;
+  max-height: 25px;
+  padding: 0;
+  margin-top: 10px;
+}
