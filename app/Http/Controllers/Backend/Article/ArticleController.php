@@ -75,11 +75,11 @@ class ArticleController extends Controller
             'content' => 'required|min:10',
         ]);
 
-        $article = Article::updateOrCreate([
-            'title' => $this->request->input('title'),
-            'description' => $this->request->input('description'),
-            'content' => $this->request->input('content'),
-        ]);
+        $article->title = $request->input('title');
+        $article->description = $request->input('description');
+        $article->content = $request->input('content');
+
+        $article->save();
         $id = $article->id;
 
 
