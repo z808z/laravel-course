@@ -11,9 +11,9 @@
             <div class="container-fluid spark-screen">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="box box-solid box-success">
+                        <div class="box box-solid box-{{Session::get('colorMessage')}}">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Успешно выполнено :)</h3>
+                                <h3 class="box-title">:)</h3>
                                 <div class="box-tools pull-right">
                                     <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                                 </div><!-- /.box-tools -->

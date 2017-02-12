@@ -7,6 +7,6 @@ return [
     'editArticle' => "Статья ':title' была успешно изменена!",
     'notEditArticle' => "Не удалось изменить статью!",
     'deleteArticle' => 'Статья была успешно удалена!',
-    'notDeletedArticle' => 'Вы отменили удаление статьи',
+    'notDeletedArticle' => 'Вы отменили удаление статьи!',
 
 ];

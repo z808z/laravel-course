@@ -43,12 +43,12 @@ class ArticleController extends Controller
 
         if ($id) {
             $message = trans('messages.addArticle', ['title' => $article->title]);
-            $mess = ['message' => $message];
+            $mess = ['message' => $message, 'colorMessage' => 'success'];
             return redirect()->route('admin.articles')->with($mess);
         }
         else {
             $message = trans('messages.notAddArticle', ['title' => $article->title]);
-            $mess = ['message' => $message];
+            $mess = ['message' => $message, 'colorMessage' => 'warning'];
             return redirect()->back()->with($mess);
         }
     }
@@ -85,12 +85,12 @@ class ArticleController extends Controller
 
         if ($id) {
             $message = trans('messages.editArticle', ['title' => $article->title]);
-            $mess = ['message' => $message];
+            $mess = ['message' => $message, 'colorMessage' => 'success'];
             return redirect()->back()->with($mess);
         }
         else {
             $message = trans('messages.notEditArticle', ['title' => $article->title]);
-            $mess = ['message' => $message];
+            $mess = ['message' => $message, 'colorMessage' => 'danger'];
             return redirect()->back()->with($mess);
         }
     }
@@ -109,7 +109,7 @@ class ArticleController extends Controller
         $this->request = $request;
         if ($this->request->input('cancel')) {
             $message = trans('messages.notDeletedArticle');
-            $mess = ['message' => $message];
+            $mess = ['message' => $message, 'colorMessage' => 'danger'];
             return redirect()->route('admin.articles')->with($mess);
         }
 
@@ -117,7 +117,7 @@ class ArticleController extends Controller
             $article = Article::find($id)->delete();
 
             $message = trans('messages.deleteArticle');
-            $mess = ['message' => $message];
+            $mess = ['message' => $message, 'colorMessage' => 'success'];
             return redirect()->route('admin.articles')->with($mess);
         }
     }

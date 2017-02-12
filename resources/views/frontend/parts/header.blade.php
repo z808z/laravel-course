@@ -4,6 +4,7 @@
         <menu class="main-header__menu">
             <ul class="main-header__items">
                 <li class="main-header__item"><a href="/">Главная</a></li>
+                <li class="main-header__item"><a href="/home">Авторизация</a></li>
             </ul>
         </menu>
 </header>
