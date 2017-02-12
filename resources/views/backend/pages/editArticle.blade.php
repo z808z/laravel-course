@@ -27,7 +27,13 @@
                 </ul>
             </div>
         @endforeach
-        <p><textarea name="content" id="" cols="30" rows="10">{{ $article->content }}</textarea></p>
+        <p><textarea name="content" id="content-ckeditor" cols="30" rows="10">{{ $article->content }}</textarea></p>
+        <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+        <script>
+            setTimeout(function(){
+                CKEDITOR.replace( 'content-ckeditor' );
+            },1000);
+        </script>
         {{ csrf_field() }}
         <input type="submit">
     </form>
