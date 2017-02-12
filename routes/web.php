@@ -32,6 +32,12 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Backend\Article'], functio
 
     Route::post('/home/article/add', 'ArticleController@addArticlePost');
 
+    Route::get('/home/article/edit/{id}', 'ArticleController@editArticle')
+        ->where('id', '[0-9]+');
+
+    Route::post('/home/article/edit/{id}', 'ArticleController@editArticlePost')
+        ->where('id', '[0-9]+');
+
     Route::get('/home/article/delete/{id}', 'ArticleController@deleteArticle')
         ->where('id', '[0-9]+');
 

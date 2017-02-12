@@ -40,6 +40,29 @@ class ArticleController extends Controller
 
 
 
+    public function editArticle($id)
+    {
+        $article = Article::find($id);
+        return view('backend.layouts.primary', ['page' => 'backend.pages.editArticle', 'article' => $article]);
+
+    }
+
+
+    public function editArticlePost(Request $request, $id)
+    {
+        $article = Article::find($id);
+        $article->title = $request->input('title');
+        $article->content = $request->input('content');
+        $article->description = $request->input('description');
+
+        $article->save();
+
+        $message = trans('messages.addArticle', ['title' => $article->title]);
+        $mess = ['message' => $message];
+        return redirect()->back()->with($mess);
+    }
+
+
     public function deleteArticle($id)
     {
         $article = Article::find($id);
