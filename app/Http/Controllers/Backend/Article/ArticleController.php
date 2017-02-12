@@ -26,16 +26,31 @@ class ArticleController extends Controller
 
     public function addArticlePost(Request $request)
     {
-        $article = new Article();
-        $article->title = $request->input('title');
-        $article->content = $request->input('content');
-        $article->description = $request->input('description');
+        $this->request = $request;
 
-        $article->save();
+        $this->validate($this->request, [
+            'title' => 'required|min:5|max:150|',
+            'description' => 'required|min:5|max:255|',
+            'content' => 'required|min:10',
+        ]);
 
-        $message = trans('messages.addArticle', ['title' => $article->title]);
-        $mess = ['message' => $message];
-        return redirect()->back()->with($mess);
+        $article = Article::create([
+            'title' => $this->request->input('title'),
+            'description' => $this->request->input('description'),
+            'content' => $this->request->input('content'),
+        ]);
+        $id = $article->id;
+
+        if ($id) {
+            $message = trans('messages.addArticle', ['title' => $article->title]);
+            $mess = ['message' => $message];
+            return redirect()->route('admin.articles')->with($mess);
+        }
+        else {
+            $message = trans('messages.notAddArticle', ['title' => $article->title]);
+            $mess = ['message' => $message];
+            return redirect()->back()->with($mess);
+        }
     }
 
 
@@ -50,16 +65,34 @@ class ArticleController extends Controller
 
     public function editArticlePost(Request $request, $id)
     {
+        $this->request = $request;
+
         $article = Article::find($id);
-        $article->title = $request->input('title');
-        $article->content = $request->input('content');
-        $article->description = $request->input('description');
 
-        $article->save();
+        $this->validate($this->request, [
+            'title' => 'required|min:5|max:150|',
+            'description' => 'required|min:5|max:255|',
+            'content' => 'required|min:10',
+        ]);
 
-        $message = trans('messages.addArticle', ['title' => $article->title]);
-        $mess = ['message' => $message];
-        return redirect()->back()->with($mess);
+        $article = Article::updateOrCreate([
+            'title' => $this->request->input('title'),
+            'description' => $this->request->input('description'),
+            'content' => $this->request->input('content'),
+        ]);
+        $id = $article->id;
+
+
+        if ($id) {
+            $message = trans('messages.editArticle', ['title' => $article->title]);
+            $mess = ['message' => $message];
+            return redirect()->back()->with($mess);
+        }
+        else {
+            $message = trans('messages.notEditArticle', ['title' => $article->title]);
+            $mess = ['message' => $message];
+            return redirect()->back()->with($mess);
+        }
     }
 
 
