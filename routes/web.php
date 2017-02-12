@@ -25,11 +25,18 @@ Route::group(['namespace' => 'Article'], function()
 
 Route::group(['middleware' => 'auth', 'namespace' => 'Backend\Article'], function () {
 
-    Route::get('/home/articles', 'ArticleController@allArticle');
+    Route::get('/home/articles', 'ArticleController@allArticle')
+        ->name('admin.articles');
 
     Route::get('/home/article/add', 'ArticleController@addArticle');
 
     Route::post('/home/article/add', 'ArticleController@addArticlePost');
+
+    Route::get('/home/article/delete/{id}', 'ArticleController@deleteArticle')
+        ->where('id', '[0-9]+');
+
+    Route::post('/home/article/delete/{id}', 'ArticleController@deleteArticlePost')
+        ->where('id', '[0-9]+');
 
     //    Route::get('/link1', function ()    {
 //        // Uses Auth Middleware

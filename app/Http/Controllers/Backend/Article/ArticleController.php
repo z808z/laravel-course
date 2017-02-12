@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+    private $request;
+
     public function allArticle()
     {
         $articles = Article::all();
@@ -34,5 +36,33 @@ class ArticleController extends Controller
         $message = trans('messages.addArticle', ['title' => $article->title]);
         $mess = ['message' => $message];
         return redirect()->back()->with($mess);
+    }
+
+
+
+    public function deleteArticle($id)
+    {
+        $article = Article::find($id);
+        return view('backend.layouts.primary', ['page' => 'backend.pages.deleteArticle', 'article' => $article]);
+
+    }
+
+
+    public function deleteArticlePost(Request $request, $id)
+    {
+        $this->request = $request;
+        if ($this->request->input('cancel')) {
+            $message = trans('messages.notDeletedArticle');
+            $mess = ['message' => $message];
+            return redirect()->route('admin.articles')->with($mess);
+        }
+
+        if ($this->request->input('confirm')){
+            $article = Article::find($id)->delete();
+
+            $message = trans('messages.deleteArticle');
+            $mess = ['message' => $message];
+            return redirect()->route('admin.articles')->with($mess);
+        }
     }
 }
