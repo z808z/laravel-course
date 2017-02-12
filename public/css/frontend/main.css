@@ -7,6 +7,10 @@ body {
     font-family: "Roboto Condensed";
 }
 
+img {
+    max-width: 100%;
+}
+
 .main-header {
     width: 100%;
     height: 200px;

@@ -18,7 +18,7 @@
                 </ul>
             </div>
         @endforeach
-        <p><textarea name="description" id="" cols="30" rows="5">{{old('description')}}</textarea></p>
+        <p><textarea name="description" id="description" cols="30" rows="5">{{old('description')}}</textarea></p>
         <h3><label for="content">Контент</label></h3>
         @foreach ($errors->get('content') as $message)
             <div class="box box-solid box-danger">
@@ -27,8 +27,18 @@
                 </ul>
             </div>
         @endforeach
-        <p><textarea name="content" id="" cols="30" rows="10">{{old('content')}}</textarea></p>
+        <p><textarea name="content" id="content-ckeditor" cols="30" rows="10">{{old('content')}}</textarea></p>
+        <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+        <script>
+            setTimeout(function(){
+            CKEDITOR.replace( 'content-ckeditor' );
+            },1000);
+        </script>
+
         {{ csrf_field() }}
         <input type="submit">
     </form>
+
+
+
 @endsection
